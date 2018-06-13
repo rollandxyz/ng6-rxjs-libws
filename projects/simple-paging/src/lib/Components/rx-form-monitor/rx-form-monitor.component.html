@@ -1,0 +1,20 @@
+
+<h2> Paging </h2>
+<form [formGroup]="angularForm">
+  <p> totalItems = {{totalItems}} </p>
+
+  <div class="form-group">
+    <label class="center-block">pageSize:
+      <input class="form-control" formControlName="name" [(ngModel)] ="pageSize">
+    </label>
+  </div>
+
+  <p> totalPages = {{totalPages}} </p>
+
+  <p> from {{this.startPos}} to {{this.endPos}} of {{totalItems}}
+    <button (click)="goPrevious()" [disabled] ="disablePrevious">  << </button>
+    <input class="form-control-currentpage" formControlName="curPage" [(ngModel)] ="currentPage">
+    <button  (click)="goNext()" [disabled] ="disableNext">  >> </button>
+  </p>
+</form>
+<xluo-item-list [items]="displayNames"></xluo-item-list>
