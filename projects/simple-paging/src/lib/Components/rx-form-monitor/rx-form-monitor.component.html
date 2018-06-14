@@ -17,4 +17,13 @@
     <button  (click)="goNext()" [disabled] ="disableNext">  >> </button>
   </p>
 </form>
+
+<mat-paginator 
+      [length]="paginatorLength" 
+      [pageSize]="paginatorPageSize" 
+      [pageSizeOptions]="paginatorPageSizeOptions" 
+      (page)="onPage($event)">
+</mat-paginator>
+
+
 <xluo-item-list [items]="displayNames"></xluo-item-list>

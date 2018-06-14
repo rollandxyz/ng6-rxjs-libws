@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 
 import { SimplePagingModule } from 'projects/simple-paging/src/lib/simple-paging.module';
 
+
 @NgModule({
   declarations: [
     AppComponent

@@ -1,19 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RxFormMonitorComponent } from './rx-form-monitor.component';
 
-describe('RxFormMonitorComponent', () => {
-  let component: RxFormMonitorComponent;
-  let fixture: ComponentFixture<RxFormMonitorComponent>;
+import { ItemListPagingComponent } from './item-list-paging.component';
+
+describe('ItemListPagingComponent', () => {
+  let component: ItemListPagingComponent;
+  let fixture: ComponentFixture<ItemListPagingComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RxFormMonitorComponent ]
+      declarations: [ ItemListPagingComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RxFormMonitorComponent);
+    fixture = TestBed.createComponent(ItemListPagingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

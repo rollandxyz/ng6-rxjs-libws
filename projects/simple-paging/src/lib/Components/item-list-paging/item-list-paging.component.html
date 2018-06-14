@@ -1,0 +1,15 @@
+
+<h2> Paging </h2>
+<hr>
+<div class="paging-div">
+  <xluo-item-list [items]="displayNames"></xluo-item-list>
+</div>
+<mat-paginator 
+      [length]="totalItems" 
+      [pageSize]="pageSize" 
+      [pageSizeOptions]="pageSizeOptions" 
+      (page)="onPage($event)">
+</mat-paginator>
+
+
+

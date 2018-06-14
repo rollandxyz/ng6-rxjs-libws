@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { range } from 'rxjs';
+import { MatPaginator, PageEvent } from '@angular/material';
 
 @Component({
   selector: 'xluo-rx-form-monitor',
@@ -8,6 +8,14 @@ import { range } from 'rxjs';
   styleUrls: ['./rx-form-monitor.component.css']
 })
 export class RxFormMonitorComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  paginatorLength = 100;
+  paginatorPageSize = 10;
+  paginatorPageSizeOptions = [5, 10, 25, 100];
+  paginatorPageEvent: PageEvent;
+
+
+
   nameChangeLog: string[] = [];
   displayNames: string[] = [];
 
@@ -74,6 +82,11 @@ export class RxFormMonitorComponent implements OnInit {
       this.endPos = 0;
       this.currentPage = 0;
     }
+
+    this.paginatorLength = this.totalItems;
+    this.paginatorPageSize = this.pageSize;
+    this.paginatorPageSizeOptions = [5, 10, 25, 100];
+    // this.paginatorPageEvent: PageEvent;
   }
 
   getFirstPage(): string[] {
@@ -100,5 +113,13 @@ export class RxFormMonitorComponent implements OnInit {
   }
   get disablePrevious(): boolean {
     return this.currentPage <= 1;
+  }
+
+  onPage(pageEvent: PageEvent) {
+    const startIndex = pageEvent.pageIndex * this.paginator.pageSize;
+    const endIndex = startIndex < length ? Math.min(startIndex + this.paginator.pageSize, length) : startIndex + this.paginator.pageSize;
+    console.log(pageEvent.previousPageIndex, pageEvent.pageIndex, startIndex, endIndex);
+    this.displayNames =  this.nameChangeLog.slice(startIndex, endIndex);
+    this.currentPage = pageEvent.pageIndex + 1;
   }
 }
